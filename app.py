@@ -8,6 +8,12 @@ app = Flask(__name__)
 def fetch(handle):
     r = requests.get('https://codeforces.com/api/user.status?handle='  + handle + '&from=1&count=1000000')
     r = r.json()
+    tag_solve_count = {'*special' : 0}
+    solve_by_ratting = {0 : 0}
+    
+    if r['status'] == 'FAILED':
+        return {"solved_by_tag": tag_solve_count, "solved_by_rating": solve_by_ratting }
+    
     r = r['result']
     names = []
     tags = {'var' : 'ok'}
