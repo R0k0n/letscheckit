@@ -70,7 +70,7 @@ def hello_world():
     args = request.args
     handle = args.get('handle')
     if not handle:
-        handle ='_shadow'
+        handle ='tourist'
     data = fetch(handle)
     return render_template('home.html' , handle = handle , solved_by_tag = data['solved_by_tag'], solved_by_rating = data['solved_by_rating'])
 
