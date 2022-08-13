@@ -17,8 +17,11 @@ def fetch(handle):
     for attribute in r:
         name = attribute['problem']['name']
         name = str(attribute['problem'].get('contestId')) + str(attribute['problem']['index'])
+        
         if 'rating' in attribute['problem']:
             difficulty = attribute['problem']['rating']
+        else:
+            difficulty = 0
         if 'tags' in attribute['problem']:
             tag = attribute['problem']['tags']
         solve = attribute['verdict']
@@ -33,7 +36,10 @@ def fetch(handle):
             st[solve] = 1
             
     abc = 800
-    solve_by_ratting = {800 : 0}
+    
+    solve_by_ratting = {0 : 0}
+    solve_by_ratting[800] = 0
+    
     while abc < 3500:
         abc += 100
         solve_by_ratting[abc] = 0

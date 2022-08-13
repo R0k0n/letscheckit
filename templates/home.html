@@ -80,9 +80,14 @@
 
             <tr>    
                 <th>
+                    {%if x==0 %}
+                        N/A
+                    {%else%}
                     {{x}}
+                    {%endif%}
                 </th>
             <td>
+                
                 {{solved_by_rating[x]}}
             </td>
             </tr>
